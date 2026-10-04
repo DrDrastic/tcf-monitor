@@ -1,0 +1,45 @@
+name: TCF slot monitor
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # GitHub's minimum; each run then loops for ~4.5 minutes
+  workflow_dispatch:         # lets you start it by hand from the Actions tab
+
+concurrency:
+  group: tcf-monitor
+  cancel-in-progress: false
+
+permissions:
+  contents: write            # needed to save the last-seen page text
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -q requests beautifulsoup4 playwright
+
+      - name: Watch the page
+        run: python monitor.py
+        env:
+          TARGET_URL: ${{ vars.TARGET_URL }}
+          RENDER_URL: ${{ vars.RENDER_URL }}
+          RENDER_SELECTOR: ${{ vars.RENDER_SELECTOR }}
+          CSS_SELECTOR: ${{ vars.CSS_SELECTOR }}
+          INTERVAL: ${{ vars.INTERVAL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Save last-seen page text
+        if: always()
+        run: |
+          git config user.name "tcf-monitor"
+          git config user.email "actions@users.noreply.github.com"
+          git add state || exit 0
+          git diff --cached --quiet || (git commit -m "update page state" && git push)
