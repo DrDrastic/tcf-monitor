@@ -16,9 +16,28 @@ import os
 import pathlib
 import sys
 import time
+from datetime import datetime, timedelta, timezone
 
 import requests
 from bs4 import BeautifulSoup
+
+def load_dotenv():
+    """Read KEY=value lines from a .env file next to this script. Real environment variables win."""
+    path = pathlib.Path(__file__).resolve().parent / ".env"
+    if not path.exists():
+        return
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        key = key.replace("export ", "").strip()
+        value = value.strip().strip('"').strip("'")
+        if value and not os.environ.get(key):
+            os.environ[key] = value
+
+
+load_dotenv()
 
 URLS = os.environ.get("TARGET_URL", "").split()
 RENDER_URLS = os.environ.get("RENDER_URL", "").split()   # pages built by JavaScript
@@ -38,9 +57,18 @@ HEADERS = {
 
 def notify(text):
     print(text, flush=True)
+    if sys.platform == "darwin":  # when run on a Mac: banner with sound as well
+        try:
+            import subprocess
+            first = text.splitlines()[0].replace('"', "'").replace("\\", "")
+            subprocess.run(["osascript", "-e",
+                            f'display notification "{first}" with title "TCF monitor" sound name "Glass"'],
+                           timeout=10)
+        except Exception:
+            pass
     if not (TOKEN and CHAT_ID):
         print("(Telegram not configured, message only printed)", flush=True)
-        return
+        return True
     try:
         r = requests.post(
             f"https://api.telegram.org/bot{TOKEN}/sendMessage",
@@ -48,8 +76,10 @@ def notify(text):
             timeout=20,
         )
         r.raise_for_status()
+        return True
     except Exception as e:  # never let a failed alert kill the monitor
         print(f"Telegram send failed: {e}", flush=True)
+        return False
 
 
 _browser = None
@@ -135,6 +165,17 @@ def check(url, render=False):
         notify(f"PAGE CHANGED - check now!\n{url}\n\n{summarize(old, new)}")
 
 
+def daily_heartbeat():
+    """Once per calendar day (India time), confirm on Telegram that the monitor is alive."""
+    today = datetime.now(timezone(timedelta(hours=5, minutes=30))).strftime("%Y-%m-%d")
+    path = STATE_DIR / "last_date.txt"
+    last = path.read_text(encoding="utf-8").strip() if path.exists() else ""
+    if last != today:
+        pages = len(URLS) + len(RENDER_URLS)
+        if notify(f"TCF monitor is running for {today} (watching {pages} pages)."):
+            path.write_text(today, encoding="utf-8")   # only once the message went out
+
+
 def main():
     if not (URLS or RENDER_URLS):
         sys.exit("TARGET_URL / RENDER_URL is not set")
@@ -142,6 +183,7 @@ def main():
     deadline = time.time() + RUN_FOR
     targets = [(u, False) for u in URLS] + [(u, True) for u in RENDER_URLS]
     while True:
+        daily_heartbeat()
         for url, render in targets:
             try:
                 check(url, render)
