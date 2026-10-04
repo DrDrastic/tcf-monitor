@@ -1,9 +1,7 @@
 name: TCF slot monitor
 
 on:
-  schedule:
-    - cron: "*/5 * * * *"   # GitHub's minimum; each run then loops for ~4.5 minutes
-  workflow_dispatch:         # lets you start it by hand from the Actions tab
+  workflow_dispatch:         # started by cron-job.org every 5 minutes, or by hand from the Actions tab
 
 concurrency:
   group: tcf-monitor
