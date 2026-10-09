@@ -1,26 +1,33 @@
-Alliance Française de Delhi : Examinations
-Menu
-My cart
-Login
-Website
-French
-Contact
-My cart
-Login
-English
-Powered By ATL Software (https://atl-software.net/en/)
-AEC
-Kiosque
-There are currently no exams available for sale in this category.
-Follow Us
-Powered By ATL Software (https://atl-software.net/en/)
-AEC
-Kiosque
-Newsletter
-Stay informed
-Subscribe
-French
-ADULTS
-© Alliance Française de Delhi - 2026 / All rights reserved /
-Created by ATL Software
-Terms and conditions of sale and the privacy policy
+extranet-aec.com | 522: Connection timed out
+Connection timed out
+Error code 522
+Visit
+cloudflare.com
+for more information.
+2026-10-09 18:35:47 UTC
+You
+Browser
+Working
+Los Angeles
+Cloudflare
+Working
+afdelhi-lodhi.extranet-aec.com
+Host
+Error
+What happened?
+The initial connection between Cloudflare's network and the origin web server timed out. As a result, the web page can not be displayed.
+What can I do?
+If you're a visitor of this website:
+Please try again in a few minutes.
+If you're the owner of this website:
+Contact your hosting provider letting them know your web server is not completing requests. An Error 522 means that the request was able to connect to your web server, but that the request didn't finish. The most likely cause is that something on your server is hogging resources.
+Additional troubleshooting information here.
+Cloudflare Ray ID:
+a47f7c3decb7b25f
+•
+Your IP:
+Click to reveal
+20.171.37.178
+•
+Performance & security by
+Cloudflare
