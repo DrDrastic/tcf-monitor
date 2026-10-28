@@ -1,26 +1,34 @@
-Alliance Française de Delhi : Examinations
-Menu
-My cart
-Login
-Website
-French
-Contact
-My cart
-Login
-English
-Powered By ATL Software (https://atl-software.net/en/)
-AEC
-Kiosque
-There are currently no exams available for sale in this category.
-Follow Us
-Powered By ATL Software (https://atl-software.net/en/)
-AEC
-Kiosque
-Newsletter
-Stay informed
-Subscribe
-French
-ADULTS
-© Alliance Française de Delhi - 2026 / All rights reserved /
-Created by ATL Software
-Terms and conditions of sale and the privacy policy
+extranet-aec.com | 521: Web server is down
+Web server is down
+Error code 521
+Visit
+cloudflare.com
+for more information.
+2026-10-28 19:40:25 UTC
+You
+Browser
+Working
+Dallas
+Cloudflare
+Working
+afdelhi-lodhi.extranet-aec.com
+Host
+Error
+What happened?
+The web server is not returning a connection. As a result, the web page is not displaying.
+What can I do?
+If you are a visitor of this website:
+Please try again in a few minutes.
+If you are the owner of this website:
+Contact your hosting provider letting them know your web server is not responding.
+Additional troubleshooting information
+.
+Cloudflare Ray ID:
+a51c69809ef2485f
+•
+Your IP:
+Click to reveal
+52.161.178.108
+•
+Performance & security by
+Cloudflare
