@@ -1,18 +1,19 @@
-Alliance Française de Delhi : Examinations
+Alliance Française de Delhi : Errors
 Menu
 My cart
 Login
 Website
 French
 Exams
+DELF
+TCF
 Contact
 My cart
 Login
 English
-Powered By ATL Software (https://atl-software.net/en/)
-AEC
-Kiosque
-There are currently no exams available for sale in this category.
+An Internal Error Has Occurred.
+Error:
+An Internal Error Has Occurred.
 Follow Us
 Powered By ATL Software (https://atl-software.net/en/)
 AEC
@@ -24,6 +25,7 @@ French
 ADULTS
 Exams
 DELF
+TCF
 © Alliance Française de Delhi - 2026 / All rights reserved /
 Created by ATL Software
 Terms and conditions of sale and the privacy policy
