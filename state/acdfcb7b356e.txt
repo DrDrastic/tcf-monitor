@@ -371,5 +371,5 @@ Candidates may either bring their lunch, eat at AFD Cafe or any eateries outside
 © 2026 Alliance Française de Delhi. Crafted & Maintained by AFD IT Team
 AccessDenied
 assets-lux168
-tx000006eaf17ba97c3052f-006b0180df-7de8967c-sgp1b
-7de8967c-sgp1b-sgp1-zg02
+tx0000062358798c7dde88f-006b018209-7de8a5ef-sgp1b
+7de8a5ef-sgp1b-sgp1-zg02
