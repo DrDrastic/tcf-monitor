@@ -129,5 +129,5 @@ Alliance Française de Delhi
 © 2026 Alliance Française de Delhi. Crafted & Maintained by AFD IT Team
 AccessDenied
 assets-lux168
-tx0000088aa8d7447b19741-006b01832e-7de8a054-sgp1b
-7de8a054-sgp1b-sgp1-zg02
+tx00000a0ecd46db52c2268-006b01845b-7de89645-sgp1b
+7de89645-sgp1b-sgp1-zg02
